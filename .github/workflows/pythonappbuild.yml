@@ -9,7 +9,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run Conda Build Script
+    - uses: goanpeca/action-setup-conda@master
+      with:
+        conda-version: '4.8'         # optional. Version of conda to use for base evironment.
+        conda-build-version: '3.17'  # optional. If not provided conda build is not installed.
+    - name: Run Conda Build 
       run: |
-        export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH"
         conda build conda_recipe -c conda-forge -c defaults
