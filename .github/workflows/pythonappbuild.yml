@@ -1,4 +1,4 @@
-name: Python application
+name: Build Python application
 
 on: [push]
 
@@ -11,4 +11,5 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run Conda Build Script
       run: |
+        export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH"
         conda build conda_recipe -c conda-forge -c defaults
